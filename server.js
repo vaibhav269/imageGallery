@@ -5,6 +5,15 @@ var mongoose = require('mongoose');
 var configDB = require('./server/config/db.js');
 var bodyParser = require('body-parser');
 
+const cloudinary = require('cloudinary')
+
+require('dotenv').config();
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+});
+
 //configuration=================================================================
 //database connection
 
@@ -26,8 +35,10 @@ require('./server/app/routes/api/signInGoogle.js')(app);
 require('./server/app/routes/api/signinFacebook.js')(app);
 require('./server/app/routes/api/logout.js')(app);
 require('./server/app/routes/api/postJob.js')(app);
+require('./server/app/routes/api/image-upload.js')(app);
+require('./server/app/routes/api/imageDelete.js')(app);
 
 //launch============================================================================
 app.listen(port,function(){
-    console.log("Server started");
+    console.log("Server started");    
 });

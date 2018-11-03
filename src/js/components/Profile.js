@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import About from './About';
-import Images from './Images';
+import ImagesGallery from './ImagesGallery';
 
 var fullDisplay = {
     display : 'flex',
@@ -53,7 +53,7 @@ class Profile extends Component{
                     </div>
                         
                     <div className = "col">                        
-                        <Images />                        
+                        <ImagesGallery />                        
                     </div>                                        
                 </div>
             </div>

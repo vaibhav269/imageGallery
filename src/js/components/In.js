@@ -9,7 +9,7 @@ import {
 
 import Profile from './Profile';
 import Nav from './Nav';
-import PostJob from './PostJob'
+import FileUpload from './FileUpload';
 
 class In extends Component{    
     constructor(){
@@ -46,7 +46,7 @@ class In extends Component{
         this.setState({
             navSessionRouteData : [                
                 {to:`${match.url}`,name:'Profile',key:'r1'},
-                {to:`${match.url}/postJob`,name:'Post Job',key:'r2'}
+                {to:`${match.url}/fileUpload`,name:'File Upload',key:'r2'}
             ],
             navSessionButtonData : [{onClick:this.logout,name:'Logout',key:'b1'}],
             isLoading:true
@@ -96,7 +96,7 @@ class In extends Component{
                     </div>
                         <div className="row justify-content-center">
                             <Switch>
-                                <Route path={`${match.path}/postJob`} render={(props) => <PostJob setToken={this.setToken} {...props} getToken = {this.getToken} /> } />
+                                <Route path={`${match.path}/fileUpload`} render={(props) => <FileUpload setToken={this.setToken} {...props} getToken = {this.getToken} /> } />
                                 <Route exact = {true} path={`${match.path}`} render={(props) => <Profile setToken={this.setToken} {...props} getToken = {this.getToken} /> } />                                
                             </Switch>
                         </div>
