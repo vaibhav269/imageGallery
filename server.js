@@ -9,9 +9,9 @@ const cloudinary = require('cloudinary')
 
 require('dotenv').config();
 cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
+    cloud_name: 'vermavaibhav',
+    api_key: '597494345967645',
+    api_secret: 'H2XX2_AYXTpnzL_JbIZIRJxiorM'
 });
 
 //configuration=================================================================
@@ -34,7 +34,7 @@ require('./server/app/routes/api/verify.js')(app);
 require('./server/app/routes/api/signInGoogle.js')(app);
 require('./server/app/routes/api/signinFacebook.js')(app);
 require('./server/app/routes/api/logout.js')(app);
-require('./server/app/routes/api/image-upload.js')(app);
+require('./server/app/routes/api/imageUpload.js')(app);
 require('./server/app/routes/api/imageDelete.js')(app);
 require('./server/app/routes/api/getImages.js')(app);
 
