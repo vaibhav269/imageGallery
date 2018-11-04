@@ -5,17 +5,33 @@ class Images extends Component{
     
     constructor(){
         super();
-        this.imageArray = [1,2,3,4,5,6,7,8,9,10]        
+        this.state = {
+            imageArray : []
+        }        
+    }
+
+    componentDidMount(){
+        fetch('/api/account/getImages')
+        .then(res=>res.json())
+        .then((text)=>{
+            if(text.success){
+                this.setState({
+                    imageArray: text.images
+                })
+            }else{
+                alert('some error occured');
+            }
+        })
     }
 
     render(){
         return(
             <div>
                 {
-                    this.imageArray.map(element => {
+                    this.state.imageArray.map(element => {
                         return(
-                            <div className = "p-2 d-inline-block" style = {{width:'20%'}}  key= {element} >
-                                <img src = { require(`../../asset/images/${element}.jpg`) } className = "w-100" alt = {element}/>                                
+                            <div className = "p-2 d-inline-block" style = {{width:'20%'}} key = {element.public_id}>
+                                <img src = { element.secure_url } className = "w-100" />
                             </div>
                         )
                     })
