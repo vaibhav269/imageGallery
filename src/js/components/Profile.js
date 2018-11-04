@@ -17,8 +17,7 @@ class Profile extends Component{
     constructor(){
         super();
         this.state={
-            showAbout : true,
-            showSelection : true
+            showAbout : false            
         }
         this.toggleAbout = this.toggleAbout.bind(this);
     }

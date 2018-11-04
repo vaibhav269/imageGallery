@@ -14,6 +14,7 @@ class FileUpload extends Component{
         }
         this.onChange = this.onChange.bind(this);
         this.removeImage = this.removeImage.bind(this);
+        this.doneUploading = this.doneUploading.bind(this);
     }
 
     onChange(e){
@@ -77,6 +78,12 @@ class FileUpload extends Component{
             }            
         })
     }
+    
+    doneUploading(){
+        this.setState({
+            images : []
+        })
+    }
 
     render() {
         const { uploading, images } = this.state
@@ -86,7 +93,16 @@ class FileUpload extends Component{
                 case uploading:
                     return <Spinner />
                 case images.length > 0:
-                    return <Images images={images} removeImage={this.removeImage} />
+                    return (
+                        <div className = "col">
+                            <div className="text-center m-4"> 
+                                <button className = "btn btn-success p-3" onClick = { this.doneUploading } > Looks Great ! Save it</button> 
+                            </div>
+                            <div className="text-center">
+                                <Images images={images} removeImage={this.removeImage} />
+                            </div>
+                        </div>
+                    )
                 default:
                     return <FileUploadButtons onChange={this.onChange} />
             }
@@ -94,7 +110,7 @@ class FileUpload extends Component{
     
         return (
           <div className="col-lg-12">
-            <div className='buttons'>
+            <div className="row no-gutters justify-content-center align-items-center"style = {{height:'90vh'}} >
                 {content()}
             </div>
           </div>
