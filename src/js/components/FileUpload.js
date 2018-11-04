@@ -64,11 +64,17 @@ class FileUpload extends Component{
         })
         .then(res=>res.json())
         .then((text)=>{
-            console.log(text);
-            this.setState({
-                images: this.state.images.filter(image => image.public_id !== id),
-                uploading: false
-            })
+            if(text.success){
+                this.setState({
+                    images: this.state.images.filter(image => image.public_id !== id),
+                    uploading: false
+                })
+            }else{
+                this.setState({                    
+                    uploading: false
+                })
+                alert('some error occured');
+            }            
         })
     }
 
