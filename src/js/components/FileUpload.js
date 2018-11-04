@@ -34,11 +34,19 @@ class FileUpload extends Component{
             body: formData
         })
         .then(res=>res.json())
-        .then((images)=>{
-            this.setState({
-                uploading: false,
-                images
-            })
+        .then((json)=>{
+            if(json.success){
+                this.setState({
+                    uploading: false,
+                    images : json.images
+                })
+            }
+            else{
+                this.setState({
+                    uploading:false
+                });
+                alert(json.message);
+            }
         })
     }
 

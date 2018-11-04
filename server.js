@@ -34,7 +34,6 @@ require('./server/app/routes/api/verify.js')(app);
 require('./server/app/routes/api/signInGoogle.js')(app);
 require('./server/app/routes/api/signinFacebook.js')(app);
 require('./server/app/routes/api/logout.js')(app);
-require('./server/app/routes/api/postJob.js')(app);
 require('./server/app/routes/api/image-upload.js')(app);
 require('./server/app/routes/api/imageDelete.js')(app);
 
