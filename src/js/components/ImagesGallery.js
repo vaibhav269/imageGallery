@@ -8,11 +8,13 @@ class Images extends Component{
         super();
         this.state = {
             imageArray : [],
-            activeImageIndex:0            
+            activeImageIndex:0,
+            showModal : false
         }
         this.setActiveImage = this.setActiveImage.bind(this);
         this.nextImage = this.nextImage.bind(this);
         this.previousImage = this.previousImage.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     componentDidMount(){
@@ -31,7 +33,14 @@ class Images extends Component{
 
     setActiveImage(i,e){        
         this.setState({
-            activeImageIndex : i
+            activeImageIndex : i,
+            showModal : true
+        });
+    }
+
+    closeModal(){
+        this.setState({
+            showModal:false
         });
     }
 
@@ -52,7 +61,7 @@ class Images extends Component{
     }
 
     render(){
-        let { imageArray,activeImageIndex } = this.state;
+        let { imageArray,activeImageIndex,showModal } = this.state;
         let activeImageUrl = '';
 
         if( imageArray.length > 0 ){                    //to avoid crashing of app as imageArray was empty initally
@@ -61,15 +70,23 @@ class Images extends Component{
 
         return(
             <div>
-                <ImageModal activeImageUrl = { activeImageUrl } previousImage = {this.previousImage} nextImage = {this.nextImage} />
+                {
+                    (showModal)?
+                        <ImageModal 
+                            activeImageUrl = { activeImageUrl } 
+                            previousImage = {this.previousImage} 
+                            nextImage = {this.nextImage} 
+                            closeModal = {this.closeModal}
+                        />
+                        :
+                        null
+                }
                 {
                     this.state.imageArray.map((element,index) => {
                         return(
-                            <div className = "p-2 d-inline-block" 
-                                style = {{width:'20%'}} 
-                                key = {index} 
-                                data-toggle="modal" 
-                                data-target="#modalImageView"                                
+                            <div className = "p-2 d-inline-block"
+                                style = {{width:'20%'}}
+                                key = {index}
                             >
                                 <img src = { element.secure_url } className = "w-100"  onClick = { (e)=>this.setActiveImage(index,e) } />
                             </div>
