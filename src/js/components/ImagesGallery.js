@@ -15,15 +15,31 @@ class Images extends Component{
         this.nextImage = this.nextImage.bind(this);
         this.previousImage = this.previousImage.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.getImages = this.getImages.bind(this);
     }
 
     componentDidMount(){
-        fetch('/api/account/getImages')
+        this.getImages();
+    }
+
+    getImages(){
+        let jsonObject = {
+            start : this.state.imageArray.length            
+        }
+        var data = new Blob([JSON.stringify(jsonObject,null,2)],{type:'application/json'});
+        const options = {
+            method : 'POST',
+            body : data,            
+            mode : 'cors',
+            cache : 'default'
+        }
+
+        fetch('/api/account/getImages',options)
         .then(res=>res.json())
         .then((text)=>{
             if(text.success){
                 this.setState({
-                    imageArray: text.images
+                    imageArray: [...this.state.imageArray,...text.images]
                 })
             }else{
                 alert('some error occured');
@@ -92,7 +108,10 @@ class Images extends Component{
                             </div>
                         )
                     })
-                }  
+                }
+                <div className = "text-center">
+                    <button className = "btn btn-success btn-lg" onClick = { this.getImages }>Load More</button>
+                </div>
             </div>
         )
     }
