@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import dp from '../../asset/images/vaibhavPic.jpg'
+import ImageModal from './ImageModal';
 
 class Images extends Component{
     
@@ -7,9 +8,11 @@ class Images extends Component{
         super();
         this.state = {
             imageArray : [],
-            activeImageUrl : ''
+            activeImageIndex:0            
         }
         this.setActiveImage = this.setActiveImage.bind(this);
+        this.nextImage = this.nextImage.bind(this);
+        this.previousImage = this.previousImage.bind(this);
     }
 
     componentDidMount(){
@@ -26,38 +29,39 @@ class Images extends Component{
         })
     }
 
-    setActiveImage(i,e){
-        console.log(i);
+    setActiveImage(i,e){        
         this.setState({
-            activeImageUrl : this.state.imageArray[i].secure_url
+            activeImageIndex : i
         });
     }
 
+    nextImage(){
+        if(this.state.activeImageIndex < this.state.imageArray.length-1 ){  //last image check
+            this.setState({
+                activeImageIndex : this.state.activeImageIndex + 1
+            })
+        }
+    }
+
+    previousImage(){
+        if(this.state.activeImageIndex > 0 ){   //first image check
+            this.setState({
+                activeImageIndex : this.state.activeImageIndex - 1
+            })
+        }
+    }
+
     render(){
+        let { imageArray,activeImageIndex } = this.state;
+        let activeImageUrl = '';
+
+        if( imageArray.length > 0 ){                    //to avoid crashing of app as imageArray was empty initally
+            activeImageUrl = imageArray[activeImageIndex].secure_url;
+        }
+
         return(
-            <div>                
-                <div className="modal fade" id="modalImageView" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">                
-                    <div className="modal-dialog modal-lg" >
-                        <div className="modal-content">                            
-                            <div className="modal-body">
-                                <div className="container-fluid">
-                                    <div className="row">
-                                        <div className="col-12">
-                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div className="row justify-content-center">
-                                        <div className="col-10 text-center">
-                                            <img src = { this.state.activeImageUrl }  alt = "Yeah not loading" style={{height:'85vh',maxWidth:'100%'}} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                        
-                        </div>
-                    </div>
-                </div>
+            <div>
+                <ImageModal activeImageUrl = { activeImageUrl } previousImage = {this.previousImage} nextImage = {this.nextImage} />
                 {
                     this.state.imageArray.map((element,index) => {
                         return(
