@@ -85,7 +85,7 @@ class Images extends Component{
         }
 
         return(
-            <div>
+            <div className = "text-center">
                 {
                     (showModal)?
                         <ImageModal 
@@ -100,11 +100,15 @@ class Images extends Component{
                 {
                     this.state.imageArray.map((element,index) => {
                         return(
-                            <div className = "p-2 d-inline-block"
-                                style = {{width:'20%'}}
+                            <div className = "p-2 d-inline-block text-center border m-1"
+                                style = {{width:'18%'}}
                                 key = {index}
                             >
-                                <img src = { element.secure_url } className = "w-100"  onClick = { (e)=>this.setActiveImage(index,e) } />
+                                <img 
+                                    src = { element.secure_url } 
+                                    onClick = { (e)=>this.setActiveImage(index,e) } 
+                                    style = {{cursor:'pointer',maxHeight:'40vh',maxWidth:'100%'}}
+                                    />
                             </div>
                         )
                     })

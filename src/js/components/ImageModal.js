@@ -20,7 +20,7 @@ class ImageModal extends Component{
 
     render(){
         return(
-            <div className = "position-fixed text-green container-fluid" style = {{top:'0',background:'rgba(200,200,200,0.9'}}>
+            <div className = "position-fixed text-green container-fluid" style = {{top:'0',background:'rgba(0,0,0,0.9'}}>
                 
                 <FontAwesomeIcon
                     icon = { faWindowClose }

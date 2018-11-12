@@ -110,7 +110,7 @@ class FileUpload extends Component{
     
         return (
           <div className="col-lg-12">
-            <div className="row no-gutters justify-content-center align-items-center"style = {{height:'90vh'}} >
+            <div className="row no-gutters justify-content-center align-items-center"style = {{minHeight:'90vh'}} >
                 {content()}
             </div>
           </div>

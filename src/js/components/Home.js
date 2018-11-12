@@ -18,7 +18,7 @@ class Home extends Component{
                     </p>
                 </blockquote>
             </div>
-            )
+        )
     }
 }
 export default Home;

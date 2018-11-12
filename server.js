@@ -9,9 +9,9 @@ const cloudinary = require('cloudinary')
 
 require('dotenv').config();
 cloudinary.config({
-    cloud_name: 'vermavaibhav',
-    api_key: '597494345967645',
-    api_secret: 'H2XX2_AYXTpnzL_JbIZIRJxiorM'
+    cloud_name: 'vaiza',
+    api_key: '991165569457373',
+    api_secret: 'RssjQjAEUrpO0X88cV-ULFTX8Ak'
 });
 
 //configuration=================================================================
