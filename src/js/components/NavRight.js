@@ -5,10 +5,10 @@ class Nav extends Component{
     render(){
         let {navRouteData,navButtonData} = this.props;        
         return(
-            <div className="w-100 bg-dark d-flex justify-content-center">
+            <div className="w-100 d-flex justify-content-center">
 
-                <nav className="navbar navbar-dark navbar-expand-lg bg-dark w-75">
-                    <Link to = '/' className="navbar-brand" style={{outline:"none"}} > OYODO </Link>
+                <nav className="navbar navbar-light navbar-expand-lg w-75">
+                    <Link to = '/' className="navbar-brand" style={{outline:"none"}} > Galliry </Link>
                     
                     <button style={{outline:"none",cursor:"pointer"}} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                         <span className="navbar-toggler-icon"></span>

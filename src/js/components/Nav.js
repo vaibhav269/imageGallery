@@ -9,7 +9,7 @@ class Nav extends Component{
 
                  <nav className="navbar navbar-dark navbar-expand-lg bg-dark" >
 
-                    <Link to = '/' className="navbar-brand" style={{outline:"none"}} >Node Auth</Link>
+                    <Link to = '/' className="navbar-brand" style={{outline:"none"}} > Galliry </Link>
                     
                     <button style={{outline:"none",cursor:"pointer"}} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                         <span className="navbar-toggler-icon"></span>

@@ -113,8 +113,10 @@ class Images extends Component{
                         )
                     })
                 }
+
+                <hr />
                 <div className = "text-center">
-                    <button className = "btn btn-success btn-lg" onClick = { this.getImages }>Load More</button>
+                    <button className = "btn btn-link" style = {{cursor:'pointer'}} onClick = { this.getImages }>Load More</button>
                 </div>
             </div>
         )

@@ -27,9 +27,13 @@ module.exports = function(app){
                 }
             });
         })
-        .catch((err)=>res.send({
-            success:false,
-            message:'Not uploaded'
-        }))
+        .catch(
+            (err)=>{
+                console.log(err);
+                res.send({
+                    success:false,
+                    message:'Not uploaded'
+                })
+            })
     })
 }
